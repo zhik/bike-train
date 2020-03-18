@@ -12,7 +12,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: 'pk.eyJ1IjoiemhpayIsImEiOiJjaW1pbGFpdHQwMGNidnBrZzU5MjF5MTJiIn0.N-EURex2qvfEiBsm-W9j7w'
 }).addTo(map);
 
-d3.json('./routes.geojson').then(routes => {
+d3.json('public/routes.geojson').then(routes => {
     //filter points and lines
     const points = routes.features.filter(feature => feature.geometry.type === "Point")
     const lines = routes.features.filter(feature => feature.geometry.type === "LineString")
