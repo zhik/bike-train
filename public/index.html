@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+
+<head lang='en'>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width'>
+    <title>nyc bike train</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
+
+    <style>
+        body {
+            margin: 40px auto;
+            max-width: 800px;
+            padding: 0 10px;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+
+        .box {
+            position: relative;
+            background: #fff;
+            box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .15);
+            margin: 1rem 0;
+            padding: 0.5rem 1rem;
+            border-radius: .2rem;
+            border: 1px solid rgba(34, 36, 38, .15);
+        }
+
+        #infobox ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #infobox li {
+            position: relative;
+        }
+
+        .line {
+            height: 1rem;
+            width: 1rem;
+            display: inline-block;
+            margin-right: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>NYC bike trains 🚲🚲🚲!</h1>
+    <div class="box">
+        <p>Join the <a target="_blank" href="https://www.facebook.com/groups/biketrainnyc/">#BikeTrain NYC</a> facebook
+            group, or click on a point for more details.</p>
+        <p>Last updated: 3/22 9:00PM</p>
+    </div>
+    <div id="map"></div>
+    <p>Note: Routes are for visual purposes, check with the event organizer for details</p>
+    <div class="box" id="infobox"></div>
+    <script src='bundle.js'></script>
+</body>
+
+</html>

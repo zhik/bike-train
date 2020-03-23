@@ -12,13 +12,13 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: 'pk.eyJ1IjoiemhpayIsImEiOiJjaW1pbGFpdHQwMGNidnBrZzU5MjF5MTJiIn0.N-EURex2qvfEiBsm-W9j7w'
 }).addTo(map);
 
-d3.json('public/routes.geojson').then(routes => {
+d3.json('routes.geojson').then(routes => {
     //filter points and lines
     const points = routes.features.filter(feature => feature.geometry.type === "Point")
     const lines = routes.features.filter(feature => feature.geometry.type === "LineString")
 
     L.geoJSON(lines, {
-        style: feature => ({color: feature.properties.color})
+        style: feature => ({ color: feature.properties.color })
     }).addTo(map);
 
     L.geoJSON(points, {
@@ -45,17 +45,26 @@ d3.json('public/routes.geojson').then(routes => {
         }
     }).addTo(map);
 
-    // //generate route info
-    // const infobox = document.getElementById('infobox')
-    // const list = document.createElement('ul')
-    //
-    // points.forEach(point => {
-    //     const listItem = document.createElement('li')
-    //     const props = point.properties
-    //     listItem.innerHTML = `<p><a href="${props.event_url}">${props.name}</a></p>`
-    //     list.appendChild(listItem)
-    // })
-    //
-    // infobox.appendChild(list)
+    //generate route info
+    const infobox = document.getElementById('infobox')
+    const list = document.createElement('ul')
+
+    points.forEach(point => {
+        const listItem = document.createElement('li')
+        const props = point.properties
+        console.log(props)
+        listItem.innerHTML = `
+            <div>
+                <span class="line" style="background-color: ${props.color};"></span>
+                <a href="${props.event_url}">${props.name}</a>
+                <p>${props.start} - ${props.end}</p>
+                <p><strong>Description: </strong>${props.description}</p>
+                <p><strong>Dates: </strong>${props.dates}</p>
+            </div>
+            `
+        list.appendChild(listItem)
+    })
+
+    infobox.appendChild(list)
 
 })
